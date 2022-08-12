@@ -1,0 +1,70 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BookController!{% endblock %}
+
+{% block body %}
+
+
+    <table  class=" mt-4 table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+        <h1>
+        Livre disponible à la location
+        </h1>
+        <tr>
+            <th>id</th>
+            <th>reference</th>
+            <th>auteur</th>
+            <th>louer</th>
+
+        </tr>
+        </thead>
+        <tbody>
+
+                    {% for book in books %}
+
+                             {% if book.isRented == false %}
+                                            <tr>
+
+                                                <td>
+                                                    <p class="fw-normal mb-1">{{ book.id }}</p>
+
+                                                </td>
+
+                                                <td>
+                                                    <p class="fw-normal mb-1">{{ book.reference }} </p>
+                                                </td>
+                                                <td>
+                                                    <p class="fw-normal mb-1">{{  book.authorid.lastname }} {{  book.authorid.firstname }}</p>
+                                                </td>
+
+                                                <td>
+                                                    <a
+
+                                                            {% if app.user ==true %}
+                                                            href="/book/renting/{{ book.id }}"
+                                                            {% else %}
+                                                                href="/login"
+                                                                {% endif %}
+                                                            class="card-link">
+                                                        <button type="button" class="btn btn-primary">
+                                                            Louer
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                                {% endif %}
+                    {% endfor %}
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+
+
+{% endblock %}

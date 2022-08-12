@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>
+        Livre en cour de location
+    </h1>
+<table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+    <tr>
+        <th>id Livre</th>
+        <th>reference</th>
+        <th>author</th>
+        <th>Date emprunt</th>
+        <th>Date de remise</th>
+        <th>Modification</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for booksrenting in booksrentings %}
+
+             {% if booksrenting.userId.id == app.user.userIdentifier %}
+            <tr>
+
+                <td>
+                    <p class="fw-normal mb-1">{{ booksrenting.bookid.id }}</p>
+
+                </td>
+
+                <td>
+                    <p class="fw-normal mb-1">{{ booksrenting.bookid.reference }} </p>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1">{{  booksrenting.bookid.authorId.firstName }}</p>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1">{{  booksrenting.rentingStart|date("d/m/Y") }}</p>
+                </td>
+                <td>
+                    <p class="fw-normal mb-1">{{  booksrenting.rentingEnd|date_modify("+30 day")|date("d/m/Y")  }}</p>
+                </td>
+
+                <td>
+                    <a href="/rendrelivre/{{ booksrenting.id }}" class="card-link">
+                        <button type="button" class="btn btn-primary">
+                            Rendre le livre
+                        </button>
+                    </a>
+                </td>
+            </tr>
+
+    {% endif %}
+    {% endfor %}
+        </tbody>
+        </table>
+
+
+
+
+{% endblock %}
+
