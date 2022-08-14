@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
         $rolesadmin[] ='ROLE_ADMIN';
 
 
-        // création d'aumoin utilisateur ADMIN
+        // création d'aumoins un utilisateur ADMIN
         // mdp : admin identifiant/phone : admin
         $user = new User();
         $user->setCreateAt(New \DateTimeImmutable());
