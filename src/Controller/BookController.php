@@ -113,7 +113,7 @@ class BookController extends AbstractController
             ->add('author_id', EntityType::class,  [
                 'class' => Author::class,
                 'choice_label' => 'last_name' ,
-                'placeholder' => ' Please choose a country',
+                'placeholder' => ' Choisir un auteur',
                 'query_builder' => function(AuthorRepository $repository) {
                     return $repository->createQueryBuilder(' c ')->orderBy('c.last_name' , 'ASC');
                 },

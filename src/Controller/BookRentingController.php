@@ -45,17 +45,16 @@ class BookRentingController extends AbstractController
             return $this->redirectToRoute(  'books.list');
         }
 
+
+        // voir listes des livres loeur par l'utilisateur connecté
     #[Route('/book/meslivres','books.meslivres')]
     public function meslivres(ManagerRegistry $doctrine): Response
     {
 
         if ($this->getUser()==true)
         {
-
             $repository = $doctrine->getRepository(BookRenting::class);
             $booksrentings = $repository->findAll();
-
-
             return $this->render('book/mesLivres.html.twig',
                 ['booksrentings' => $booksrentings]);
         }
@@ -68,8 +67,8 @@ class BookRentingController extends AbstractController
 
 
     }
-    #[Route('/rendrelivre/{id}','rendrelivre')]
 
+    #[Route('/rendrelivre/{id}','rendrelivre')]
     public function rendrelivre(Request $request,BookRenting $bookrenting,ManagerRegistry $doctrine) :Response
     {
 
@@ -81,8 +80,6 @@ class BookRentingController extends AbstractController
 
 
     }
-
-
 
 
   // delete all renting

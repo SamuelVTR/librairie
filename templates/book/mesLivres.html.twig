@@ -20,6 +20,7 @@
     <tbody>
     {% for booksrenting in booksrentings %}
 
+        <!--   Affiche que les livres de l'utilisateur connecté -->
              {% if booksrenting.userId.id == app.user.userIdentifier %}
             <tr>
 
@@ -50,7 +51,7 @@
                 </td>
             </tr>
 
-    {% endif %}
+            {% endif %}
     {% endfor %}
         </tbody>
         </table>

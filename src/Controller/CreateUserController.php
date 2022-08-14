@@ -41,10 +41,6 @@ class CreateUserController extends AbstractController
     #[Route('/create/newuser','create.new')]
     public function createUser(UserPasswordHasherInterface $passwordHasher,Request $request,ManagerRegistry $doctrine){
 
-
-
-
-
             $user = new User();
             $form= $this->createForm(UserType::class,$user);
             $form->handleRequest($request);
@@ -97,15 +93,12 @@ class CreateUserController extends AbstractController
     }
 
     #[Route('/admin/users/delete/{id}','admin.user.delete')]
-
     public function deleteuser(Request $request,User $user,ManagerRegistry $doctrine) :Response
     {
-
 
             $doctrine->getManager()->remove($user);
             $doctrine->getManager()->flush();
             return $this->redirectToRoute(  'users.list');
-
 
     }
 

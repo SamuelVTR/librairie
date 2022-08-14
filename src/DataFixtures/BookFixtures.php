@@ -11,6 +11,8 @@ use Faker\Factory;
 
 class BookFixtures extends Fixture
 {
+
+    // permet de faire des fixtures de livre et d'auteur
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');

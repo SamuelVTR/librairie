@@ -40,9 +40,6 @@ class AuthorController extends AbstractController
             $doctrine->getManager()->flush();
             return $this->redirectToRoute(  'admin.authors.list');
         }
-
-
-
         return $this->render('admin/author/createauthor.html.twig', [
             'author'=> $author,
             'form' => $form->createView(),
@@ -50,10 +47,10 @@ class AuthorController extends AbstractController
     }
 
 
+    // modifier auteur
     #[Route('/authors/edit/{id}','admin.author.edit')]
     public function Editauthor(Request $request,Author $author,ManagerRegistry $doctrine) :Response
     {
-
 
         $form= $this->createForm(AuthorType::class,$author);
         $form->handleRequest($request);
@@ -72,8 +69,9 @@ class AuthorController extends AbstractController
         ]);
     }
 
+    //supprimer un auteur
     #[Route('/authors/delete/{id}','admin.author.delete')]
-    public function deleteauthor(Request $request,Author $author,ManagerRegistry $doctrine) :Response
+    public function deleteauthor(Author $author,ManagerRegistry $doctrine) :Response
     {
 
 

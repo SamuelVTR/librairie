@@ -19,7 +19,6 @@
         </tr>
         </thead>
         <tbody>
-
                     {% for book in books %}
 
                              {% if book.isRented == false %}
@@ -38,8 +37,9 @@
                                                 </td>
 
                                                 <td>
-                                                    <a
 
+       <!-- renvoie l'utilisateur vers la page de connexion si il n'est pas connecté et essaye d'acceder à la page de prêt  -->
+                                                    <a
                                                             {% if app.user ==true %}
                                                             href="/book/renting/{{ book.id }}"
                                                             {% else %}
@@ -55,11 +55,6 @@
 
                                 {% endif %}
                     {% endfor %}
-
-
-
-
-
 
 
 
